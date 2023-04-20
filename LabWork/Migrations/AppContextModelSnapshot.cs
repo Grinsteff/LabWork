@@ -4,6 +4,7 @@ using LabWork.Model.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using AppContext = LabWork.Model.DataContext.AppContext;
 
 #nullable disable
 
@@ -31,12 +32,8 @@ namespace LabWork.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Price")
+                    b.Property<double?>("Price")
                         .HasColumnType("REAL");
-
-                    b.Property<string>("Qr")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

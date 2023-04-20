@@ -2,6 +2,7 @@
 using AppContext = LabWork.Model.DataContext.AppContext;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace LabWork.Model
 {
@@ -15,15 +16,20 @@ namespace LabWork.Model
                 return result;
             }
         }
-        public static string AddProduct(string name, double price, string desc)
+        public static string AddProduct(string name, double? price, string desc)
         {
             string result = "Товар уже существует";
             using (AppContext db = new AppContext())
             {
-                bool checkIsProductExists = db.Products.Any(p => p.Name == name && p.Desc == desc);
-                if (!checkIsProductExists)
+                Product product = db.Products.Where(p => p.Name == name && p.Desc == desc && p.Price == price).FirstOrDefault();
+                if (product == null)
                 {
-                    Product newProduct = new Product { Name = name, Desc = desc, Price = price };
+                    Product newProduct = new Product
+                    {
+                        Name = name,
+                        Price = price,
+                        Desc = desc
+                    };
                     db.Products.Add(newProduct);
                     db.SaveChanges();
                     result = "Товар успешно занесен в список";
@@ -32,7 +38,7 @@ namespace LabWork.Model
                 return result;
             }           
         }
-        public static string DeleteProduct(Product oldProduct, string name, double price, string desc)
+        public static string DeleteProduct(Product oldProduct)
         {
             string result = "Товар не существует";
             using (AppContext db = new AppContext())
@@ -48,12 +54,12 @@ namespace LabWork.Model
             }
             return result;
         }
-        public static string EditProduct(Product oldProduct, string name, string desc, double price)
+        public static string EditProduct(Product oldProduct, string name, string desc, double? price)
         {
             string result = "Товар не существует";
             using (AppContext db = new AppContext())
             {
-                Product product = db.Products.FirstOrDefault(p => p.Id == oldProduct.Id);
+                Product product = db.Products.Where(p => p.Id == oldProduct.Id).FirstOrDefault();
                 if (product != null)
                 {
                     product.Name = name;
@@ -65,6 +71,6 @@ namespace LabWork.Model
                 return result;
             }
 
-        }
+        }        
     }
 }

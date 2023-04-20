@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         ui:WindowHelper.UseModernWindowStyle="True"
         mc:Ignorable="d"
-        Title="AddProduct" Height="400" Width="500">
+        Title="Добавить товар" Name="AddProductWnd" Height="400" Width="500">
         
     <Grid>
         <Grid.RowDefinitions>
@@ -18,13 +18,14 @@
         <StackPanel
             Grid.Row="0" Width="300" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Имя товара"/>
-            <TextBox Text=""/>
+            <TextBox Text="{Binding ProductName}" Name="NameBlock"/>
             <TextBlock Text="Цена товара"/>
-            <TextBox Text=""/>
+            <TextBox Text="{Binding ProductPrice}" PreviewTextInput="PreviewTextInput" Name="PriceBlock"/>
             <TextBlock Text="Описание товара"/>
-            <TextBox Text="" Height="50"/>
+            <TextBox Text="{Binding ProductDesc}" Name="DescBlock" Height="50"/>
         </StackPanel>
-        <Button x:Name="Add_Product_Btn" Content="Занести товар в список" Grid.Row="1" HorizontalAlignment="Center" FontSize="22" Width="400"/>
+        <Button x:Name="Add_Product_Btn" Content="Занести товар в список" Grid.Row="1" HorizontalAlignment="Center" 
+                Command="{Binding AddNewProduct}" CommandParameter="{Binding ElementName=AddProductWnd}" FontSize="22" Width="400"/>
 
     </Grid>
 </Window>

@@ -19,9 +19,15 @@ namespace LabWork.View
     /// </summary>
     public partial class MessageView : Window
     {
-        public MessageView()
+        public MessageView(string message)
         {
             InitializeComponent();
+            MessageBox.Text = message;
+        }
+
+        private void Ok_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

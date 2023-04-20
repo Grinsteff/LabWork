@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LabWork.ViewModel;
+using ModernWpf.Controls;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LabWork.View
 {
@@ -20,9 +10,12 @@ namespace LabWork.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static System.Windows.Controls.ListView AllProductsView;
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new DataManageVM();
+            AllProductsView = ViewAllProducts;
         }
     }
 }

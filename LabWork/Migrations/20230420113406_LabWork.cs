@@ -17,9 +17,8 @@ namespace LabWork.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<double>(type: "REAL", nullable: false),
-                    Desc = table.Column<string>(type: "TEXT", nullable: false),
-                    Qr = table.Column<string>(type: "TEXT", nullable: false)
+                    Price = table.Column<double>(type: "REAL", nullable: true),
+                    Desc = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

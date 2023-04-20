@@ -1,7 +1,10 @@
-﻿using System;
+﻿using LabWork.Model;
+using LabWork.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +22,26 @@ namespace LabWork.View
     /// </summary>
     public partial class EditProduct : Window
     {
-        public EditProduct()
+        public EditProduct(Product productToEdit)
         {
             InitializeComponent();
+            DataContext = new DataManageVM();
+            DataManageVM.SelectedProduct = productToEdit;
+            DataManageVM.ProductName = productToEdit.Name;
+            DataManageVM.ProductPrice = productToEdit.Price;
+            DataManageVM.ProductDesc = productToEdit.Desc;
+
+
+        }
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void CancelEdit_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

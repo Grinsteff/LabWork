@@ -5,13 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using AppContext = LabWork.Model.DataContext.AppContext;
 
 #nullable disable
 
 namespace LabWork.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20230404144806_LabWork")]
+    [Migration("20230420113406_LabWork")]
     partial class LabWork
     {
         /// <inheritdoc />
@@ -34,12 +35,8 @@ namespace LabWork.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Price")
+                    b.Property<double?>("Price")
                         .HasColumnType("REAL");
-
-                    b.Property<string>("Qr")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
