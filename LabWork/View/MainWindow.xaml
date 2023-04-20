@@ -5,24 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LabWork.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Список товаров" Height="450" Width="800"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True">
-    
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="269*"/>
+            <ColumnDefinition Width="531*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <ListView>
+        <Border BorderThickness="1" BorderBrush="Orange" Grid.Row="0" Grid.ColumnSpan="2">
+            <TextBlock Text="Товары в наличии" Grid.Row="0" FontSize="25" HorizontalAlignment="Center"/>
+        </Border>
+
+        <ListView x:Name="ViewAllProducts" Grid.Row="1" ItemsSource="{Binding AllProducts}" SelectedItem="{Binding SelectedProduct}" Grid.ColumnSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        
+                        <Image Source="{Binding QRCode}"/>
+                        <TextBlock Text="{Binding Path=Name}"/>
+                        <TextBlock Text="{Binding Path=Price}"/>
+                        <TextBlock Text="{Binding Path=Desc}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        <Border Grid.Row="1" BorderBrush="Orange" BorderThickness="1.5" Grid.ColumnSpan="2" Margin="0,344,0,0" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Добавить" Command="{Binding OpenAddNewProductWindow}"/>
+                <Button Content="Изменить" Command="{Binding EditProductWindow}"/>
+                <Button Content="Удалить" Command="{Binding DeleteSelectedProduct}"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

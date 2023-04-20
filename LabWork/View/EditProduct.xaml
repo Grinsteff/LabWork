@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LabWork.View"
         mc:Ignorable="d"
-        Title="EditProduct" Height="400" Width="500">
+        Title="EditProduct" Name="EditProductView" Height="400" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -14,14 +14,14 @@
         <StackPanel
             Grid.Row="0" Width="300" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Имя товара"/>
-            <TextBox Text=""/>
+            <TextBox x:Name="EditNameBlock" Text="{Binding ProductName}"/>
             <TextBlock Text="Цена товара"/>
-            <TextBox Text=""/>
+            <TextBox x:Name="EditPriceBlock" Text="{Binding ProductPrice}" PreviewTextInput="PreviewTextInput" />
             <TextBlock Text="Описание товара"/>
-            <TextBox Text="" Height="50"/>
+            <TextBox x:Name="EditDescBlock" Text="{Binding ProductDesc}" Height="50"/>
         </StackPanel>
-        <Button x:Name="SaveEdit_btn" Content="Сохранить изменения" Grid.Row="1" HorizontalAlignment="Left" FontSize="20" Width="240"/>
-        <Button x:Name="CancelEdit_btn" Content="Отмена" Grid.Row="1" HorizontalAlignment="Right" FontSize="20" Width="240" />
+        <Button x:Name="SaveEdit_btn" Content="Сохранить изменения" Grid.Row="1" HorizontalAlignment="Left" FontSize="20" Width="240" Command="{Binding EditSelectedProduct}" CommandParameter="{Binding ElementName=EditProductView}"/>
+        <Button x:Name="CancelEdit_btn" Content="Отмена" Grid.Row="1" Click="CancelEdit_btn_Click" HorizontalAlignment="Right" FontSize="20" Width="240" />
 
     </Grid>
 </Window>
