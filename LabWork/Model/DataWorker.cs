@@ -24,12 +24,8 @@ namespace LabWork.Model
                 Product product = db.Products.Where(p => p.Name == name && p.Desc == desc && p.Price == price).FirstOrDefault();
                 if (product == null)
                 {
-                    Product newProduct = new Product
-                    {
-                        Name = name,
-                        Price = price,
-                        Desc = desc
-                    };
+                    Product newProduct = new Product(name, price, desc);
+
                     db.Products.Add(newProduct);
                     db.SaveChanges();
                     result = "Товар успешно занесен в список";
