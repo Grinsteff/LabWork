@@ -27,7 +27,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Image Source="{Binding QRCode}"/>
+                        <Image Height="100" Width="100" Source="{Binding QRCode}"/>
                         <TextBlock Text="{Binding Path=Name}"/>
                         <TextBlock Text="{Binding Path=Price}"/>
                         <TextBlock Text="{Binding Path=Desc}"/>
