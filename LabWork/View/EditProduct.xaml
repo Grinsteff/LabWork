@@ -16,7 +16,7 @@
             <TextBlock Text="Имя товара"/>
             <TextBox x:Name="EditNameBlock" Text="{Binding ProductName}"/>
             <TextBlock Text="Цена товара"/>
-            <TextBox x:Name="EditPriceBlock" Text="{Binding ProductPrice}" PreviewTextInput="PreviewTextInput" />
+            <TextBox x:Name="EditPriceBlock" Text="{Binding ProductPrice}" />
             <TextBlock Text="Описание товара"/>
             <TextBox x:Name="EditDescBlock" Text="{Binding ProductDesc}" Height="50"/>
         </StackPanel>

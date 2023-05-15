@@ -20,7 +20,7 @@
             <TextBlock Text="Имя товара"/>
             <TextBox Text="{Binding ProductName}" Name="NameBlock"/>
             <TextBlock Text="Цена товара"/>
-            <TextBox Text="{Binding ProductPrice}" PreviewTextInput="PreviewTextInput" Name="PriceBlock"/>
+            <TextBox Text="{Binding ProductPrice}" Name="PriceBlock"/>
             <TextBlock Text="Описание товара"/>
             <TextBox Text="{Binding ProductDesc}" Name="DescBlock" Height="50"/>
         </StackPanel>
