@@ -10,6 +10,7 @@ namespace LabWork.Model
 {
     public static class RegExpr
     {
+        
         public static bool IsNameVld(string name)
         {
             
@@ -18,7 +19,8 @@ namespace LabWork.Model
         }
         public static bool IsPriceVld(double? price)
         {
-            if (price == null || price <= 0) {return false; }
+            Regex regex = new Regex(@"(\d)");
+            if (string.IsNullOrEmpty(price.ToString()) || price <= 0 || !regex.IsMatch(price.ToString())) {return false; }
             return true;
         }
         public static bool IsDescVld(string desc)

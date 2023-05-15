@@ -68,14 +68,17 @@ namespace LabWork.ViewModel
                     if (!RegExpr.IsNameVld(ProductName))
                     {
                         SetRedBlockControl(wnd,"NameBlock");
+                        return;
                     }
                     if (!RegExpr.IsPriceVld(ProductPrice))
                     {
                         SetRedBlockControl(wnd, "PriceBlock");
+                        return;
                     }
                     if (!RegExpr.IsDescVld(ProductDesc))
                     {
                         SetRedBlockControl(wnd, "DescBlock");
+                        return;
                     }
                     else
                     {
